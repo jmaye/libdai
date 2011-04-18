@@ -487,7 +487,7 @@ class State {
  *  This example shows how to use the Permute, multifor and State classes.
  *
  *  \section Output
- *  \verbinclude examples/example_permute.out
+ *  \verbinclude example_permute.out
  *
  *  \section Source
  */

@@ -17,9 +17,10 @@ remake_project(
 
 remake_doc(
   html
+  latex
 )
 
-remake_pack_deb(libboost-program-options-dev)
+remake_pack_deb()
 
 remake_pack_deb(
   COMPONENT dev
@@ -36,7 +37,7 @@ remake_pack_deb(
 remake_pack_deb(
   COMPONENT examples
   DESCRIPTION "Examples programs"
-  libdai cimg-dev
+  libdai
 )
 
 remake_pack_deb(
