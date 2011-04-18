@@ -1,0 +1,2 @@
+remake_define(BOOST_TEST_DYN_LINK true)
+remake_add_executables(TESTING LINK dai boost_unit_test_framework-mt)
