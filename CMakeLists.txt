@@ -15,6 +15,8 @@ remake_project(
   INSTALL /usr
 )
 
+remake_set(LIBDAI_HEADER_DESTINATION include/dai FORCE CACHE INIT)
+
 remake_doc(
   html
   latex
