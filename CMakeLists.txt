@@ -26,6 +26,8 @@ remake_pack_deb(
   COMPONENT dev
   DESCRIPTION "Development headers"
   libdai
+  libboost-dev
+  libboost-graph-dev
 )
 
 remake_pack_deb(
