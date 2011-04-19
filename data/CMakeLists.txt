@@ -1,1 +1,1 @@
-remake_add_files(*.out)
+remake_add_files(*.fg *.jpg INSTALL data)

@@ -20,6 +20,11 @@ remake_doc(
   latex
 )
 
+remake_add_directories(
+  data
+  COMPONENT data
+)
+
 remake_pack_deb()
 
 remake_pack_deb(
@@ -51,4 +56,10 @@ remake_pack_deb(
 remake_pack_deb(
   COMPONENT doc
   DESCRIPTION "Documentation"
+  libdai
+)
+
+remake_pack_deb(
+  COMPONENT data
+  DESCRIPTION "Data for examples, tests and utils"
 )
