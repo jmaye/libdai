@@ -13,9 +13,8 @@ remake_project(
   LICENSE "GNU General Public License (GPL)"
   PREFIX dai-
   INSTALL /usr
+  HEADER_DESTINATION dai
 )
-
-remake_set(LIBDAI_HEADER_DESTINATION include/dai FORCE CACHE INIT)
 
 remake_doc(
   html
