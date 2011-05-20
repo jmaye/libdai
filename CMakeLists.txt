@@ -13,7 +13,7 @@ remake_project(
   LICENSE "GNU General Public License (GPL)"
   PREFIX dai-
   INSTALL /usr
-  HEADER_DESTINATION dai
+  HEADER_DESTINATION include/dai
 )
 
 remake_doc(
