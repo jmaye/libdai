@@ -160,7 +160,7 @@ class VarSet : public SmallSet<Var> {
  *  This example shows how to use the Var, VarSet and State classes. It also explains the concept of "states" for VarSets.
  *
  *  \section Output
- *  \verbinclude example_varset.out
+ *  \verbinclude examples/example_varset.out
  *
  *  \section Source
  */

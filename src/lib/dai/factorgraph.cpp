@@ -6,6 +6,7 @@
  *
  *  Copyright (C) 2006-2009  Joris Mooij  [joris dot mooij at libdai dot org]
  *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
+ *  Copyright (C) 2008       Christian Wojek
  */
 
 
@@ -112,7 +113,7 @@ std::istream& operator>> ( std::istream& is, FactorGraph &fg ) {
     is >> nr_Factors;
     if( is.fail() )
         DAI_THROWE(INVALID_FACTORGRAPH_FILE,"Cannot read number of factors");
-    if( verbose >= 2 )
+    if( verbose >= 1 )
         cerr << "Reading " << nr_Factors << " factors..." << endl;
 
     getline (is,line);
@@ -121,13 +122,13 @@ std::istream& operator>> ( std::istream& is, FactorGraph &fg ) {
 
     map<long,size_t> vardims;
     for( size_t I = 0; I < nr_Factors; I++ ) {
-        if( verbose >= 3 )
+        if( verbose >= 2 )
             cerr << "Reading factor " << I << "..." << endl;
         size_t nr_members;
         while( (is.peek()) == '#' )
             getline(is,line);
         is >> nr_members;
-        if( verbose >= 3 )
+        if( verbose >= 2 )
             cerr << "  nr_members: " << nr_members << endl;
 
         vector<long> labels;
@@ -138,7 +139,7 @@ std::istream& operator>> ( std::istream& is, FactorGraph &fg ) {
             is >> mi_label;
             labels.push_back(mi_label);
         }
-        if( verbose >= 3 )
+        if( verbose >= 2 )
             cerr << "  labels: " << labels << endl;
 
         vector<size_t> dims;
@@ -149,7 +150,7 @@ std::istream& operator>> ( std::istream& is, FactorGraph &fg ) {
             is >> mi_dim;
             dims.push_back(mi_dim);
         }
-        if( verbose >= 3 )
+        if( verbose >= 2 )
             cerr << "  dimensions: " << dims << endl;
 
         // add the Factor
@@ -166,6 +167,8 @@ std::istream& operator>> ( std::istream& is, FactorGraph &fg ) {
             Ivars.push_back( Var(labels[mi], dims[mi]) );
         }
         facs.push_back( Factor( VarSet( Ivars.begin(), Ivars.end(), Ivars.size() ), (Real)0 ) );
+        if( verbose >= 2 )
+            cerr << "  vardims: " << vardims << endl;
 
         // calculate permutation object
         Permute permindex( Ivars );
@@ -175,7 +178,7 @@ std::istream& operator>> ( std::istream& is, FactorGraph &fg ) {
         while( (is.peek()) == '#' )
             getline(is,line);
         is >> nr_nonzeros;
-        if( verbose >= 3 )
+        if( verbose >= 2 )
             cerr << "  nonzeroes: " << nr_nonzeros << endl;
         for( size_t k = 0; k < nr_nonzeros; k++ ) {
             size_t li;
@@ -337,7 +340,7 @@ vector<VarSet> FactorGraph::maximalFactorDomains() const {
 }
 
 
-Real FactorGraph::logScore( const std::vector<size_t>& statevec ) {
+Real FactorGraph::logScore( const std::vector<size_t>& statevec ) const {
     // Construct a State object that represents statevec
     // This decouples the representation of the joint state in statevec from the factor graph
     map<Var, size_t> statemap;

@@ -383,7 +383,7 @@ void BipartiteGraph::construct( size_t nrNodes1, size_t nrNodes2, EdgeInputItera
  *  how to iterate over nodes and their neighbors.
  *
  *  \section Output
- *  \verbinclude example_bipgraph.out
+ *  \verbinclude examples/example_bipgraph.out
  *
  *  \section Source
  */
