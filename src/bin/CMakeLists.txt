@@ -1,5 +1,7 @@
-remake_include(../lib)
 remake_find_package(Boost COMPONENTS unit_test_framework program_options)
+
+remake_include(../lib)
+
 remake_add_directories(tests COMPONENT tests)
 remake_add_directories(examples COMPONENT examples)
 remake_add_directories(utils COMPONENT utils)
