@@ -1,11 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2006-2010  Joris Mooij  [joris dot mooij at libdai dot org]
- *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -27,6 +24,7 @@
 #include <boost/lexical_cast.hpp>
 #include <algorithm>
 #include <cerrno>
+#include <gmpxx.h>
 
 #include <dai/exceptions.h>
 
@@ -81,6 +79,15 @@ namespace dai {
 
 /// Real number (alias for \c double, which could be changed to <tt>long double</tt> if necessary)
 typedef double Real;
+
+/// Arbitrary precision integer number
+typedef mpz_class BigInt;
+
+/// Safe down-cast of big integer to size_t
+inline size_t BigInt_size_t( const BigInt &N ) {
+    DAI_ASSERT( N <= std::numeric_limits<std::size_t>::max() );
+    return N.get_ui();
+}
 
 /// Returns true if argument is NAN (Not A Number)
 bool isnan( Real x );

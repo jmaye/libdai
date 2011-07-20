@@ -1,10 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2008  Frederik Eaton  [frederik at ofb dot net]
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -84,6 +82,7 @@ class Gibbs : public DAIAlgFG {
     /// \name General InfAlg interface
     //@{
         virtual Gibbs* clone() const { return new Gibbs(*this); }
+        virtual Gibbs* construct( const FactorGraph &fg, const PropertySet &opts ) const { return new Gibbs( fg, opts ); }
         virtual std::string name() const { return "GIBBS"; }
         virtual Factor belief( const Var &v ) const { return beliefV( findVar( v ) ); }
         virtual Factor belief( const VarSet &vs ) const;

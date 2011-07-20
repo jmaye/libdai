@@ -1,11 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2009  Frederik Eaton  [frederik at ofb dot net]
- *  Copyright (C) 2009-2010  Joris Mooij  [joris dot mooij at libdai dot org]
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -32,7 +29,8 @@ Real FBP::logZ() const {
         Real c_i = 0.0;
         foreach( const Neighbor &I, nbV(i) )
             c_i += Weight(I);
-        sum += (1.0 - c_i) * beliefV(i).entropy();  // FBP
+        if( c_i != 1.0 )
+            sum += (1.0 - c_i) * beliefV(i).entropy();  // FBP
     }
     return sum;
 }
@@ -63,7 +61,7 @@ Prob FBP::calcIncomingMessageProduct( size_t I, bool without_i, size_t i ) const
                         prod_j += message( j, J.iter );
                     else
                         prod_j *= message( j, J.iter );
-                } else {
+                } else if( c_I != 1.0 ) {
                     // FBP: multiply by m_Ij^(1-1/c_I)
                     if( props.logdomain )
                         prod_j += newMessage( j, J.iter) * (1.0 - 1.0 / c_I);

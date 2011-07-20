@@ -1,12 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2006-2009  Joris Mooij  [joris dot mooij at libdai dot org]
- *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
- *  Copyright (C) 2008       Christian Wojek
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -352,7 +348,7 @@ Real FactorGraph::logScore( const std::vector<size_t>& statevec ) const {
     // by summing the log factor entries of the factors that correspond to this joint configuration
     Real lS = 0.0;
     for( size_t I = 0; I < nrFactors(); I++ )
-        lS += dai::log( factor(I)[S(factor(I).vars())] );
+        lS += dai::log( factor(I)[BigInt_size_t(S(factor(I).vars()))] );
     return lS;
 }
 

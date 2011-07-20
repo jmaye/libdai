@@ -1,11 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2006-2010  Joris Mooij  [joris dot mooij at libdai dot org]
- *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -110,6 +107,7 @@ class HAK : public DAIAlgRG {
     /// \name General InfAlg interface
     //@{
         virtual HAK* clone() const { return new HAK(*this); }
+        virtual HAK* construct( const FactorGraph &fg, const PropertySet &opts ) const { return new HAK( fg, opts ); }
         virtual std::string name() const { return "HAK"; }
         virtual Factor belief( const VarSet &vs ) const;
         virtual std::vector<Factor> beliefs() const;

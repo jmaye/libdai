@@ -26,7 +26,10 @@ remake_add_directories(
   COMPONENT data
 )
 
-remake_pack_deb()
+remake_pack_deb(
+  libgmp3-dev
+  libgmpxx4ldbl
+)
 
 remake_pack_deb(
   COMPONENT dev

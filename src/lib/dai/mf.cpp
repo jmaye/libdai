@@ -1,11 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2006-2010  Joris Mooij  [joris dot mooij at libdai dot org]
- *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -101,7 +98,7 @@ Factor MF::calcNewBelief( size_t i ) {
                 belief_I_minus_i *= _beliefs[j];
         Factor f_I = factor(I);
         if( props.updates == Properties::UpdateType::NAIVE )
-            f_I.takeLog();
+            f_I.takeLog(true);
         Factor msg_I_i = (belief_I_minus_i * f_I).marginal( var(i), false );
         if( props.updates == Properties::UpdateType::NAIVE )
             result *= msg_I_i.exp();

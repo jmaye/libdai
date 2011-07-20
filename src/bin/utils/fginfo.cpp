@@ -1,11 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2006-2010  Joris Mooij  [joris dot mooij at libdai dot org]
- *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -98,13 +95,13 @@ int main( int argc, char *argv[] ) {
         cout << "Pairwise interactions? " << fg.isPairwise() << endl;
         
         // Calculate treewidth using various heuristics
-        std::pair<size_t,double> tw;
+        std::pair<size_t,BigInt> tw;
         cout << "Treewidth (MinNeighbors):     ";
         try {
             tw = boundTreewidth(fg, &eliminationCost_MinNeighbors, maxstates );
             cout << tw.first << " (" << tw.second << " states)" << endl;
         } catch( Exception &e ) {
-            if( e.code() == Exception::OUT_OF_MEMORY )
+            if( e.getCode() == Exception::OUT_OF_MEMORY )
                 cout << "> " << maxstates << endl;
             else
                 cout << "an exception occurred" << endl;
@@ -115,7 +112,7 @@ int main( int argc, char *argv[] ) {
             tw = boundTreewidth(fg, &eliminationCost_MinWeight, maxstates );
             cout << tw.first << " (" << tw.second << " states)" << endl;
         } catch( Exception &e ) {
-            if( e.code() == Exception::OUT_OF_MEMORY )
+            if( e.getCode() == Exception::OUT_OF_MEMORY )
                 cout << "> " << maxstates << endl;
             else
                 cout << "an exception occurred" << endl;
@@ -126,7 +123,7 @@ int main( int argc, char *argv[] ) {
             tw = boundTreewidth(fg, &eliminationCost_MinFill, maxstates );
             cout << tw.first << " (" << tw.second << " states)" << endl;
         } catch( Exception &e ) {
-            if( e.code() == Exception::OUT_OF_MEMORY )
+            if( e.getCode() == Exception::OUT_OF_MEMORY )
                 cout << "> " << maxstates << endl;
             else
                 cout << "an exception occurred" << endl;
@@ -137,14 +134,14 @@ int main( int argc, char *argv[] ) {
             tw = boundTreewidth(fg, &eliminationCost_WeightedMinFill, maxstates );
             cout << tw.first << " (" << tw.second << " states)" << endl;
         } catch( Exception &e ) {
-            if( e.code() == Exception::OUT_OF_MEMORY )
+            if( e.getCode() == Exception::OUT_OF_MEMORY )
                 cout << "> " << maxstates << endl;
             else
                 cout << "an exception occurred" << endl;
         }
         
         // Calculate total state space
-        long double stsp = 1.0;
+        BigInt stsp = 1;
         for( size_t i = 0; i < fg.nrVars(); i++ )
             stsp *= fg.var(i).states();
         cout << "Total state space:   " << stsp << endl;
@@ -152,9 +149,9 @@ int main( int argc, char *argv[] ) {
         cout << "Type: " << (fg.isPairwise() ? "pairwise" : "higher order") << " interactions, " << (fg.isBinary() ? "binary" : "nonbinary") << " variables" << endl;
 
         // Calculate complexity for LCBP
-        long double cavsum_lcbp = 0.0;
-        long double cavsum_lcbp2 = 0.0;
-        long double max_Delta_size = 0.0;
+        BigInt cavsum_lcbp = 0;
+        BigInt cavsum_lcbp2 = 0;
+        BigInt max_Delta_size = 0;
         map<size_t,size_t> cavsizes;
         for( size_t i = 0; i < fg.nrVars(); i++ ) {
             VarSet di = fg.delta(i);
@@ -162,7 +159,7 @@ int main( int argc, char *argv[] ) {
                 cavsizes[di.size()]++;
             else
                 cavsizes[di.size()] = 1;
-            long double Ds = fg.Delta(i).nrStates();
+            BigInt Ds = fg.Delta(i).nrStates();
             if( Ds > max_Delta_size )
                 max_Delta_size = Ds;
             cavsum_lcbp += di.nrStates();

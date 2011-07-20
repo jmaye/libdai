@@ -1,11 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2006-2011  Joris Mooij  [joris dot mooij at libdai dot org]
- *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -30,6 +27,9 @@ int main( int argc, char *argv[] ) {
         cout << "total number of states less than <maxstates> (where 0 means unlimited)." << endl << endl;
         return 1;
     } else {
+        // Report inference algorithms built into libDAI
+        cout << "Builtin inference algorithms: " << builtinInfAlgNames() << endl << endl;
+
         // Read FactorGraph from the file specified by the first command line argument
         FactorGraph fg;
         fg.ReadFromFile(argv[1]);
@@ -53,7 +53,7 @@ int main( int argc, char *argv[] ) {
         try {
             boundTreewidth(fg, &eliminationCost_MinFill, maxstates );
         } catch( Exception &e ) {
-            if( e.code() == Exception::OUT_OF_MEMORY ) {
+            if( e.getCode() == Exception::OUT_OF_MEMORY ) {
                 do_jt = false;
                 cout << "Skipping junction tree (need more than " << maxstates << " states)." << endl;
             }

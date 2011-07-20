@@ -1,10 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2010  Joris Mooij  [joris dot mooij at libdai dot org]
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -58,7 +56,8 @@ Real TRWBP::logZ() const {
         Real c_i = 0.0;
         foreach( const Neighbor &I, nbV(i) )
             c_i += Weight(I);
-        sum += (1.0 - c_i) * beliefV(i).entropy();  // TRWBP/FBP
+        if( c_i != 1.0 )
+            sum += (1.0 - c_i) * beliefV(i).entropy();  // TRWBP/FBP
     }
     return sum;
 }
@@ -90,7 +89,7 @@ Prob TRWBP::calcIncomingMessageProduct( size_t I, bool without_i, size_t i ) con
                         prod_j += message( j, J.iter ) * c_J;
                     else
                         prod_j *= message( j, J.iter ) ^ c_J;
-                } else { // TRWBP: multiply by m_Ij^(c_I-1)
+                } else if( c_J != 1.0 ) { // TRWBP: multiply by m_Ij^(c_I-1)
                     if( props.logdomain )
                         prod_j += message( j, J.iter ) * (c_J - 1.0);
                     else

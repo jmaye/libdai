@@ -1,10 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2009  Joris Mooij  [joris dot mooij at libdai dot org]
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -33,7 +31,6 @@ int main( int argc, char *argv[] ) {
         Real   tol = 1.0e-9;
         size_t maxiter = 10000;
         Real   damping = 0.0;
-        BBP::Properties::UpdateType updates = BBP::Properties::UpdateType::PAR;
 
         // Store the constants in a PropertySet object
         PropertySet opts;

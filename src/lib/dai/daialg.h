@@ -1,11 +1,8 @@
 /*  This file is part of libDAI - http://www.libdai.org/
  *
- *  libDAI is licensed under the terms of the GNU General Public License version
- *  2, or (at your option) any later version. libDAI is distributed without any
- *  warranty. See the file COPYING for more details.
+ *  Copyright (c) 2006-2011, The libDAI authors. All rights reserved.
  *
- *  Copyright (C) 2006-2009  Joris Mooij  [joris dot mooij at libdai dot org]
- *  Copyright (C) 2006-2007  Radboud University Nijmegen, The Netherlands
+ *  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
  */
 
 
@@ -43,6 +40,12 @@ class InfAlg {
 
         /// Returns a pointer to a new, cloned copy of \c *this (i.e., virtual copy constructor)
         virtual InfAlg* clone() const = 0;
+
+        /// Returns a pointer to a newly constructed inference algorithm
+        /** \param fg Factor graph on which to perform the inference algorithm;
+         *  \param opts Parameters passed to constructor of inference algorithm;
+         */
+        virtual InfAlg* construct( const FactorGraph &fg, const PropertySet &opts ) const = 0;
     //@}
 
     /// \name Queries
