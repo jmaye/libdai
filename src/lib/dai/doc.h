@@ -31,8 +31,8 @@
 
 /** \mainpage Reference manual for libDAI - A free/open source C++ library for Discrete Approximate Inference methods
  *  \author Joris Mooij (with contributions of Frederik Eaton)
- *  \version git HEAD
- *  \date July 12, 2011 - or later
+ *  \version 0.3.1
+ *  \date September 17, 2012
  *
  *  <hr size="1">
  *  \section about About libDAI
@@ -117,12 +117,12 @@
  *  \section compatibility Compatibility
  *  
  *  The code has been developed under Debian GNU/Linux with the GCC compiler suite.
- *  libDAI compiles successfully with g++ versions 3.4 up to 4.6.
+ *  libDAI compiles successfully with g++ versions 3.4 up to 4.7 (both 32 and 64 bits).
  *
- *  libDAI has also been successfully compiled with MS Visual Studio 2008 under Windows
- *  (but not all build targets are supported yet) and with Cygwin under Windows.
+ *  libDAI has also been successfully compiled with MS Visual Studio 2008 under Windows,
+ *  MS Visual Studio 2010 under Windows 64, and with Cygwin under Windows.
  *
- *  Finally, libDAI has been compiled successfully on MacOS X.
+ *  Finally, libDAI has been compiled successfully on MacOS X (both 32 and 64 bits).
  *
  *  \section download Downloading libDAI
  *  The libDAI sources and documentation can be downloaded from the libDAI website:
@@ -200,7 +200,7 @@
  *    - GNU make
  *    - recent boost C++ libraries (at least version 1.37; however,
  *      version 1.37 shipped with Ubuntu 9.04 is known not to work)
- *    - GMP library (or the Windows port called MPIR)
+ *    - GMP library (or the Windows port called MPIR, for 64 bits builds MPIR 2.5.0 or higher is needed)
  *    - doxygen (only for building the documentation)
  *    - graphviz (only for using some of the libDAI command line utilities)
  *    - CImg library (only for building the image segmentation example)
@@ -259,7 +259,7 @@
  *  You need:
  *  - A recent version of MicroSoft Visual Studio (2008 is known to work)
  *  - recent boost C++ libraries (version 1.37 or higher)
- *  - GMP or MPIR library
+ *  - GMP or MPIR library (for 64-bits builds, MPIR 2.5.0 or higher is needed)
  *  - GNU make (can be obtained from http://gnuwin32.sourceforge.net)
  *  - CImg library (only for building the image segmentation example)
  *
@@ -290,6 +290,7 @@
  *  
  *  Information about how to build GPR or MPIR under Windows can be found on the internet.
  *  The user has to update Makefile.WINDOWS in order to link with the GPR/MPIR libraries.
+ *  Note that for 64-bit builds, MPIR 2.5.0 or higher is needed.
  *
  *  \subsection build-windows-libdai Building libDAI
  *
