@@ -4,7 +4,7 @@ include(ReMake)
 
 remake_project(
   libdai
-  VERSION 0.3
+  VERSION 0.3.1
   RELEASE beta
   SUMMARY "A free/open source C++ library for Discrete Approximate Inference"
   AUTHOR "Joris M. Mooij"
