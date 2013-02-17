@@ -1,3 +1,9 @@
+libdai (0.3.1-23) lucid; urgency=low
+
+  * Fixing small dependencies
+
+ -- Jerome Maye <jerome.maye@mavt.ethz.ch>  Sun, 17 Feb 2013 19:49:39 +0100
+
 libdai (0.3.1-22) lucid; urgency=low
 
   * Deployment
