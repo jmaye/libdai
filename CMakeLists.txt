@@ -4,12 +4,12 @@ include(ReMake)
 
 remake_project(
   libdai
-  VERSION 0.3
+  VERSION 0.3.1
   RELEASE beta
   SUMMARY "A free/open source C++ library for Discrete Approximate Inference"
   AUTHOR "Joris M. Mooij"
   CONTACT "joris.mooij@libdai.org"
-  HOME "http://aslforge.ethz.ch/projects/libdai"
+  HOME "http://www.libdai.org"
   LICENSE "BSD 2-Clause License (FreeBSD)"
   PREFIX dai-
   INSTALL /usr
@@ -65,4 +65,12 @@ remake_pack_deb(
 remake_pack_deb(
   COMPONENT data
   DESCRIPTION "Data for examples, tests and utils"
+)
+
+remake_distribute_deb(
+  SECTION libs
+  DISTRIBUTION lucid
+  DEPENDS remake doxygen
+  PASS CMAKE_BUILD_TYPE LIBDAI_SUBVERSION_REVISION
+  UPLOAD ppa:jmaye/ethz
 )
