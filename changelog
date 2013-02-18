@@ -1,3 +1,9 @@
+libdai (0.3.1-26) lucid; urgency=low
+
+  * Fixing doc issue
+
+ -- Jerome Maye <jerome.maye@mavt.ethz.ch>  Mon, 18 Feb 2013 14:37:49 +0100
+
 libdai (0.3.1-25) lucid; urgency=low
 
   * Fixing doc issue
