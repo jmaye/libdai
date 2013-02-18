@@ -191,14 +191,14 @@ class GLC : public DAIAlgCG {
              */
             DAI_ENUM(CavityType,FULL,PAIR,PAIR2,UNIFORM);
 
-            /// Enumeration of different possible types of region (\ominus r in the paper)
+            /// Enumeration of different possible types of region (\f$\ominus r\f$ in the paper)
             /** The following initialization methods are defined:
              *  - SINGLE using single variable
              *  - FACTOR partitioning regions of that form corresponding to GLC (in the paper)
              *  - LOOP partitioning regions of that form corresponding to GLC (in the paper)
              *  - DELTA partitioning regions of that form corresponding to GLC (in the paper)
              *  - OVFACTOR, OVLOOP, OVDELTA the corresponding form of region in the overlapping form corresponding to GLC+ (in the paper)
-             *  For example, using OVFACTOR each factor becomes a region (\ominus r), while using FACTOR the regions contain only
+             *  For example, using OVFACTOR each factor becomes a region (\f$\ominus r\f$), while using FACTOR the regions contain only
              *  non-overlapping factors and if some variables can't be covered by any remaining factors single variable regions
              *  are constructed for them.
              *  With this convention OVDELTA here corresponds to DELTA using CVM (HAK).
@@ -231,7 +231,7 @@ class GLC : public DAIAlgCG {
             bool reinit;
 
             /// Whether or not to include auxiliary factors in a region. 
-            /** The auxilary factors are the ones that only depend on variables on the boundary of a region (\oplus r - \ominus r).
+            /** The auxilary factors are the ones that only depend on variables on the boundary of a region (\f$\oplus r - \ominus r\f$).
              *  This sometimes produces orders of magnitude improvement (e.g., in grids), but it is not discussed in the paper.
              */
             bool auxfactors;
@@ -245,11 +245,11 @@ class GLC : public DAIAlgCG {
             /// What update schedule to use
             UpdateType updates;
 
-            /** Indicates what happens if a subset of variables in the boundary of a region (\ominus r_p) is shared by
-             *  some neighbors such that one (\ominus r_{p,q1}) is a subset of another (\ominus r_{p,q2}).
+            /** Indicates what happens if a subset of variables in the boundary of a region (\f$\ominus r_p\f$) is shared by
+             *  some neighbors such that one (\f$\ominus r_{p,q1}\f$) is a subset of another (\f$ominus r_{p,q2}\f$).
              *  - ALL     all such neighbors are included in the the updates.
-             *  - TOP     only (\ominus r_{p,q2}) is included unless (\ominus r_{p,q2} = \ominus r_{p,q1}) in which case both are included
-             *  - CLOSEST (default): similar to TOP but in case of a tie the the region r_q with largest r_q \cap r_p is considered
+             *  - TOP     only (\f$\ominus r_{p,q2}\f$) is included unless (\f$\ominus r_{p,q2} = \ominus r_{p,q1}\f$) in which case both are included
+             *  - CLOSEST (default): similar to TOP but in case of a tie the the region \f$r_q\f$ with largest \f$r_q \cap r_p\f$ is considered
              *  \note Not important in perfomance!
              */
             CobwebGraph::NeighborType neighbors;

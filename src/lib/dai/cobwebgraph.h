@@ -57,11 +57,11 @@ class CobwebGraph : public FactorGraph {
             std::vector<VarSet> subregions;
         };
 
-        /** Indicates what happens if a subset of variables in the boundary of a region (\ominus r_p) is shared by
-         *  some neighbors such that one (\ominus r_{p,q1}) is a subset of another (\ominus r_{p,q2}).
+        /** Indicates what happens if a subset of variables in the boundary of a region (\f$\ominus r_p\f$) is shared by
+         *  some neighbors such that one (\f$\ominus r_{p,q1}\f$) is a subset of another (\f$\ominus r_{p,q2}\f$).
          *  - ALL     all such neighbors are included in the the updates.
-         *  - TOP     only (\ominus r_{p,q2}) is included unless (\ominus r_{p,q2} = \ominus r_{p,q1}) in which case both are included
-         *  - CLOSEST (default): similar to TOP but in case of a tie the the region r_q with largest r_q \cap r_p is considered
+         *  - TOP     only (\f$\ominus r_{p,q2}\f$) is included unless (\f$\ominus r_{p,q2} = \ominus r_{p,q1}\f$) in which case both are included
+         *  - CLOSEST (default): similar to TOP but in case of a tie the the region \f$r_q\f$ with largest \f$r_q \cap r_p\f$ is considered
          *  \note Not important in perfomance!
          */
         DAI_ENUM(NeighborType,ALL,TOP,CLOSEST);
@@ -69,7 +69,7 @@ class CobwebGraph : public FactorGraph {
     protected:
         /// Vector of variable indices internal to each region (r)
         std::vector<SmallSet<size_t> >        _INRs;
-        /// Vector of variable indices on the boundary of each region (\ominus r)
+        /// Vector of variable indices on the boundary of each region (\f$\ominus r\f$)
         std::vector<SmallSet<size_t> >        _EXRs;
         /// Index of factors in each region
         std::vector<SmallSet<size_t> >        _Rfs;
@@ -77,7 +77,7 @@ class CobwebGraph : public FactorGraph {
         std::vector<SmallSet<size_t> >        _Rifs;
         /// Index of factors that bridge each region, i.e., not all its variables are internal to the region
         std::vector<SmallSet<size_t> >        _Rxfs;
-        /// The vector of domain of messages leaving each region (\ominus r_{p,q})
+        /// The vector of domain of messages leaving each region (\f$\ominus r_{p,q}\f$)
         std::vector<std::vector<VarSet> >     _outM;
         /// Vector of all connections to each region
         std::vector<std::vector<Connection> > _M;
@@ -169,25 +169,25 @@ class CobwebGraph : public FactorGraph {
             return _Rfs[R];
         }
 
-        /// Returns constant reference to the index of variables on the boundary of region \a R (\ominus r)
+        /// Returns constant reference to the index of variables on the boundary of region \a R (\f$\ominus r\f$)
         const SmallSet<size_t>& EXRs( size_t R ) const {
             DAI_DEBASSERT( R < _EXRs.size() );
             return _EXRs[R];
         }
 
-        /// Returns reference to the index of variables on the boundary of region \a R (\ominus r)
+        /// Returns reference to the index of variables on the boundary of region \a R (\f$\ominus r\f$)
         SmallSet<size_t>& EXRs( size_t R ) {
             DAI_DEBASSERT( R < _EXRs.size() );
             return _EXRs[R];
         }
 
-        /// Returns constant reference to the index of variables inside region \a R (r)
+        /// Returns constant reference to the index of variables inside region \a R (\f$r\f$)
         const SmallSet<size_t>& INRs( size_t R ) const {
             DAI_DEBASSERT( R < _INRs.size() );
             return _INRs[R];
         }
 
-        /// Returns reference to the index of variables inside region \a R (r)
+        /// Returns reference to the index of variables inside region \a R (\f$r\f$)
         SmallSet<size_t>& INRs( size_t R ) {
             DAI_DEBASSERT( R < _INRs.size() );
             return _INRs[R];
