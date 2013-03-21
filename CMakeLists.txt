@@ -71,10 +71,19 @@ remake_pack_deb(
 )
 
 remake_distribute_deb(
-  SECTION libs
   DISTRIBUTION lucid
+  SECTION libs
+  UPLOAD ppa:jmaye/ethz
   DEPENDS remake doxygen libgmp3-dev libboost-all-dev cimg-dev graphviz texlive
     texlive-extra-utils texlive-font-utils ghostscript
   PASS CMAKE_BUILD_TYPE LIBDAI_SUBVERSION_REVISION
+)
+
+remake_distribute_deb(
+  DISTRIBUTION precise
+  SECTION libs
   UPLOAD ppa:jmaye/ethz
+  DEPENDS remake doxygen libgmp3-dev libboost-all-dev cimg-dev graphviz texlive
+    texlive-extra-utils texlive-font-utils ghostscript
+  PASS CMAKE_BUILD_TYPE LIBDAI_SUBVERSION_REVISION
 )
