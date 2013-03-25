@@ -27,47 +27,43 @@ remake_add_directories(
 )
 
 remake_pack_deb(
-  libgmp3-dev
+  DEPENDS libgmp3-dev
 )
 
 remake_pack_deb(
   COMPONENT dev
   DESCRIPTION "Development headers"
-  libdai
-  libgmp3-dev
-  libboost-all-dev
+  DEPENDS libdai libgmp3-dev libboost-all-dev
 )
 
 remake_pack_deb(
   COMPONENT tests
   DESCRIPTION "Test programs"
-  libdai
+  DEPENDS libdai
 )
 
 remake_pack_deb(
   COMPONENT examples
   DESCRIPTION "Examples programs"
-  libdai
-  libx11-dev
+  DEPENDS libdai libx11-dev
 )
 
 remake_pack_deb(
   COMPONENT utils
   DESCRIPTION "Utility programs"
-  libdai
-  libboost-program-options-dev
+  DEPENDS libdai libboost-program-options-dev
 )
 
 remake_pack_deb(
   COMPONENT doc
   DESCRIPTION "Documentation"
-  libdai
+  DEPENDS libdai
 )
 
 remake_pack_deb(
   COMPONENT data
   DESCRIPTION "Data for examples, tests and utils"
-  libdai
+  DEPENDS libdai
 )
 
 remake_distribute_deb(
