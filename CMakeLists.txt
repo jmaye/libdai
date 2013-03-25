@@ -27,7 +27,7 @@ remake_add_directories(
 )
 
 remake_pack_deb(
-  DEPENDS libgmp3-dev
+  DEPENDS libgmpxx4ldbl
 )
 
 remake_pack_deb(
@@ -39,19 +39,19 @@ remake_pack_deb(
 remake_pack_deb(
   COMPONENT tests
   DESCRIPTION "Test programs"
-  DEPENDS libdai
+  DEPENDS libdai libboost-program-options[0-9.]*
 )
 
 remake_pack_deb(
   COMPONENT examples
   DESCRIPTION "Examples programs"
-  DEPENDS libdai libx11-dev
+  DEPENDS libdai libx11-[0-9.]*
 )
 
 remake_pack_deb(
   COMPONENT utils
   DESCRIPTION "Utility programs"
-  DEPENDS libdai libboost-program-options-dev
+  DEPENDS libdai libboost-program-options[0-9.]*
 )
 
 remake_pack_deb(
