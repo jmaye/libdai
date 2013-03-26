@@ -39,7 +39,7 @@ remake_pack_deb(
 remake_pack_deb(
   COMPONENT tests
   DESCRIPTION "Test programs"
-  DEPENDS libdai libboost-program-options[0-9.]*
+  DEPENDS libdai libboost-program-options[0-9.]* libboost-test[0-9.]*
 )
 
 remake_pack_deb(
