@@ -1,3 +1,9 @@
+libdai (0.3.1-31) lucid; urgency=low
+
+  * porting to GIT 
+
+ -- Jerome Maye <jerome.maye@mavt.ethz.ch>  Mon, 22 Apr 2013 10:53:45 +0200
+
 libdai (0.3.1-30) lucid; urgency=low
 
   * dependencies corrected 
