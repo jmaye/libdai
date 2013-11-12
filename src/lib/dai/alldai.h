@@ -19,6 +19,7 @@
 #define __defined_libdai_alldai_h
 
 
+#include <dai/dai_config.h>
 #include <string>
 #include <dai/daialg.h>
 #include <dai/properties.h>
@@ -71,7 +72,7 @@ namespace dai {
 
 
 /// Returns a map that contains for each built-in inference algorithm its name and a pointer to an object of that type
-/** \deprecated This functionality is obsolete and will be removed in future versions of libDAI
+/** \obsolete This functionality is obsolete and will be removed in future versions of libDAI
  */
 std::map<std::string, InfAlg *>& builtinInfAlgs();
 
